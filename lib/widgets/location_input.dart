@@ -8,7 +8,9 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_appl_favorite_places/models/place.dart';
 
 class LocationInput extends StatefulWidget {
-  const LocationInput({super.key});
+  const LocationInput({super.key, required this.onSelectLocation});
+
+  final void Function(PlaceLocation location) onSelectLocation;
 
   @override
   State<LocationInput> createState() => _LocationInputState();
@@ -69,10 +71,15 @@ class _LocationInputState extends State<LocationInput> {
     final address = resDate['results'][0]['formatted_address'];
 
     setState(() {
-      _pickedLocation =
-          PlaceLocation(latitude: lat, longitude: long, address: address);
+      _pickedLocation = PlaceLocation(
+        latitude: lat,
+        longitude: long,
+        address: address,
+      );
       _isGettingLocation = false;
     });
+
+    widget.onSelectLocation(_pickedLocation!);
   }
 
   @override
