@@ -8,7 +8,7 @@ class MapScreen extends StatefulWidget {
     this.location = const PlaceLocation(
       latitude: 37.422,
       longitude: -122.084,
-      address: "",
+      address: '',
     ),
     this.isSelecting = true,
   });
@@ -57,7 +57,7 @@ class _MapScreenState extends State<MapScreen> {
             ? {}
             : {
                 Marker(
-                  markerId: MarkerId("M1"),
+                  markerId: MarkerId('m1'),
                   position: _pickedLocation ??
                       LatLng(
                         widget.location.latitude,
